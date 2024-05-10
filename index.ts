@@ -1,9 +1,11 @@
 const number = 232556;
 
-const firstByte = (number & (0xff << (8 * 3))) >> (8 * 3)
-const secondByte = (number & (0xff << (8 * 2))) >> (8 * 2)
-const thirdByte = (number & (0xff << (8 * 1))) >> (8 * 1)
-const lastByte = (number & (0xff << (0))) >> 0
+const BIT_MASK = 0xff;
+
+const firstByte = number >> 8 * 3
+const secondByte = (number >> 8 * 2) & BIT_MASK
+const thirdByte = (number >> 8 * 1) & BIT_MASK
+const lastByte = number & BIT_MASK
 
 console.log({
   number: toBinary(number, 32),
